@@ -48,27 +48,34 @@ ano = df_ambiental['Ano'].unique()
 # Layout do aplicativo
 app.layout = html.Div(
     style={
-        'height' : '893px',
-        'width': '1909px',  # Definindo a largura da Div
+        'height' : '100%',
+        'width': '100%',  # Definindo a largura da Div
         'margin': '0 ',  # Centraliza a Div
         #'padding': '10px',  # Espaçamento interno
         'display': 'flex',  # Usar flexbox
         'flexDirection': 'column',  # Coloca o título primeiro e depois os elementos
         'alignItems': 'center',  # Centraliza os itens
-        'backgroundColor': '#E2ECE9'
+        'backgroundColor': '#EDF6F9',
+        'display': 'flex',
     },
     children=[
         # Adicionando o título no topo
         html.H1(
-            "Dashboard de Visualização 3D e Gráfico Ternário",  # Título
+            "SISTEMA VETORIAL - TRILEMA ENERGÉTICO",  # Título
             style={
-                'textAlign': 'center',  # Centralizar o texto
+                'textAlign': 'left',  # Centralizar o texto
                 'fontFamily': 'Helvetica',
-                'fontSize': '20px',  # Tamanho da fonte
-                'marginBottom': '5px',  # Espaço abaixo do título
-                'margin-right' : 'auto',
-                'margin-left' : '10px',
-                'color': '#023e8a'
+                'fontSize': '30px',  # Tamanho da fonte
+                #'marginBottom': '5px',  # Espaço abaixo do título
+                'margin-top' : '10px',
+                'margin-top' : '0',
+                #'margin-left' : 'auto',
+                'color': '#EDF6F9',
+                'backgroundColor': '#0677BB',
+                'height' : '60px',
+                'width': '100%', 
+                'justifyContent': 'center',
+                
             }
         ),
 
@@ -78,25 +85,34 @@ app.layout = html.Div(
                 'display': 'flex',  # Usar flexbox para layout em linha
                 'flexDirection': 'row',  # Colocar os elementos em linha (horizontal)
                 'width': '100%',  # Usar toda a largura
-                #'justifyContent': 'space-between',  # Espaçar os itens
+                'flexWarp': 'warp',
+                #'justifyContent': 'center',  # centraliza em tamanhos maiores
             },
             children=[
                 # Div esquerda (dropdowns e informações)
                 html.Div(
                     style={
-                        'width': '300px',
+                        'width': '20%',
+                        'height': '100%',
                         'display': 'flex', 
+                        'minWidth': '250px',
                         'flexDirection': 'column',  # Coloca dropdowns em coluna
-                        'marginRight': '2px'  # Espaçamento à direita
+                        'margin-left': '10px' ,# Espaçamento à direita
+                        'backgroundColor': '#0677BB',
+                        #'margin-top': '30px',
+                        'justifyContent': 'center',
+                        'color': 'white'
+                        
                     },
                     children=[
-                        html.H1("Filtros", style={'fontFamily' : 'Helvetica', 'fontSize': '20px', 'margin-left' : '10px'}),
+                        html.H1("Filtros", style={'fontFamily' : 'Helvetica', 'fontSize': '18px', 'margin-left' : '10px'}),
                         dcc.Dropdown(
                             id='estado-dropdown',
                             options=[{'label': estado, 'value': estado} for estado in estado],
                             value=estado[0],  # Valor padrão
                             clearable=False,
                             style={
+                                'width': '90%',
                                 'fontFamily' : 'Helvetica',
                                 'fontSize' : '16px',
                                 'color' : 'black',
@@ -113,22 +129,26 @@ app.layout = html.Div(
                                 'fontSize' : '16px',
                                 'color' : 'black',
                                 'margin-left' : '5px',
+                                'width': '90%',
                             }
                         ),
-                        html.Div(style={'height': '50px'}),  # Espaçamento entre as divs
+                        html.Div(style={'height': '20px'}),  # Espaçamento entre as divs
                         html.Div(
                             id='angulos-div',
                             style={
-                                'width' : '300px',
+                                'width' : '270px',
                                 'padding' : '10px',
-                                'border' : '1px solid #ddd',
-                                'border-radius': '10px',
-                                'backgroundColor' : '#f9f9f9',
-                                'margin-left' : '5px',
+                                #'border' : '1px solid #ddd',
+                                #'border-radius': '10px',
+                                'margin-left' : '10px',
+                                'color': 'white',
                                 #'display': 'None'
+                                #'alignItems': 'center',
+                                #'alignItems': 'flex-start',
+                                #'justifyContent': 'center'
                             },
                             children=[
-                                html.H3("Ângulos de Inclinação", style={'fontFamily' : 'Helvetica'}),
+                                html.H3("Ângulos de Inclinação", style={'fontFamily' : 'Helvetica',}),
                                 html.Hr(),
                                 html.P("Comparação entre cada um dos eixos com o vetor ideal ", style={'fontFamily' : 'Helvetica', 'fontSize' : '16px'}),
                                 html.P(id='angulo-ideal-x', style={'padding-left' : '20px','fontFamily' : 'Helvetica'}),
@@ -151,42 +171,78 @@ app.layout = html.Div(
                     ],
                 ),
                 html.Div(style={'height': '400px', 'display': 'flex'}),  # Espaçamento entre as divs                
-                # Div para os gráficos
                 html.Div(
                     style={
-                        'display': 'flex',
-                        'flexDirection': 'row',  # Alinhar os gráficos horizontalmente
-                        'width': '900px',  # Largura maior para acomodar os gráficos
-                        #'alignItems': 'center',
-                        'alignItems': 'flex-start',
-                        'justifyContent': 'space-between',  # Espaçar os gráficos igualmente
+                        'width': '100%',  # Largura maior para acomodar os gráficos
+                        'height': 'auto',
+                        'flexDirection': 'columns',
+                        'backgroundColor': '#457b9d',
                     },
                     children=[
-                        # Primeiro gráfico 3D
-                        dcc.Graph(
-                            id='vetor-grafico',
-                            config={'displayModeBar': True},
+                        html.Div(
                             style={
-                                #'height': '100px', 
-                                #'width': '100px', 
-                                'margin-left': '50px',
-                                'margin-top': '50px',
-                                'border-radius': '10px',
-                                }  # Ajustando dimensões
+                                #'backgroundColor': '#EDF6F9',  
+                                'width': '1520px',  # Largura maior para acomodar os gráficos
+                                'height': '100px',
+                                'margin-left': '30px',
+                                'color': 'white'
+                            },
+                            children=[
+                                html.H1(
+                                "Este painel oferece uma comparação entre o sistema vetorial proposto na tése e entre o triângulo do trilema energético, proposto por parovic.",
+                                style={
+                                    'fontFamily' : 'Helvetica',
+                                    'fontSize' : '16px',
+                                }
+                                )
+                            ]
                         ),
-                        #html.Div(style={'width': '500px'}),
-                        dcc.Graph(
-                            id='ternario-grafico',
-                            config={'displayModeBar': True},
+                        # Div para os gráficos
+                        html.Div(
                             style={
-                                #'height': '100px', 
-                                #'width': '100px', 
-                                'margin-left': '20px',
-                                'margin-top': '50px',
-                                'backgroundColor': '#80ffdb'
-                                }  # Ajustando dimensões e espaçamento
-                        )
+                                'display': 'flex',
+                                'flexDirection': 'row',  # Alinhar os gráficos horizontalmente
+                                'width': '100%',  # Largura maior para acomodar os gráficos
+                                'height': '650px',
+                                #'alignItems': 'center',
+                                #'margin-left': '70px',
+                                #'margin-right': '20px',
+                                'margin-top': '0',
+                                'alignItems': 'flex-start',
+                                'alignItems': 'center',
+                                'justifyContent': 'center',  # Espaçar os gráficos igualmente
+                                'border-radius': '10px',
+                                #'backgroundColor': '#bee1e6',
+                            },
+                            children=[
+                                # Primeiro gráfico 3D
+                                dcc.Graph(
+                                    id='vetor-grafico',
+                                    config={'displayModeBar': True},
+                                    style={
+                                        #'height': '100px', 
+                                        #'width': '100px', 
+                                        #'margin-left': '50px',
+                                        #'margin-top': '50px',
+                                        #'justifyContent': 'center',
+                                        }  # Ajustando dimensões
+                                ),
+                                html.Div(style={'width': '20px'}),
+                                dcc.Graph(
+                                    id='ternario-grafico',
+                                    config={'displayModeBar': True},
+                                    style={
+                                        #'height': '100px', 
+                                        #'width': '100px', 
+                                        #'margin-left': '20px',
+                                        #'margin-top': '50px',
+                                        #'backgroundColor': '#80ffdb'
+                                        }  # Ajustando dimensões e espaçamento
+                                )
+                            ]
+                        ),
                     ]
+                    
                 ),
             ]
         ),
@@ -286,25 +342,25 @@ def atualizar_grafico(estado_selecionado, ano_selecionado):
     fig1.add_trace(go.Scatter3d(
         x=[start[0], ideal[0]], y=[start[1], 0], z=[start[2], 0],
         mode='lines+markers',
-        line=dict(color='blue', width=5),
+        line=dict(color='#1d3557', width=5),
         marker=dict(size=4),
-        name='Vetor ideal'
+        name='Vetor ideal x'
     ))
 
     fig1.add_trace(go.Scatter3d(
         x=[start[0], 0], y=[start[1], ideal[1]], z=[start[2], 0],
         mode='lines+markers',
-        line=dict(color='blue', width=5),
+        line=dict(color='#1d3557', width=5),
         marker=dict(size=4),
-        name='Vetor ideal'
+        name='Vetor ideal y'
     ))
 
     fig1.add_trace(go.Scatter3d(
         x=[start[0], 0], y=[start[1], 0], z=[start[2], ideal[2]],
         mode='lines+markers',
-        line=dict(color='blue', width=5),
+        line=dict(color='#1d3557', width=5),
         marker=dict(size=4),
-        name='Vetor ideal'
+        name='Vetor ideal z'
     ))
 
     # projeções vetor de analise
@@ -312,25 +368,25 @@ def atualizar_grafico(estado_selecionado, ano_selecionado):
     fig1.add_trace(go.Scatter3d(
         x=[start[0], equidade], y=[start[1], 0], z=[start[2], 0],
         mode='lines+markers',
-        line=dict(color='black', width=5),
+        line=dict(color='#ffba08', width=5),
         marker=dict(size=4),
-        name='Vetor ideal'
+        name='Vetor real x'
     ))
 
     fig1.add_trace(go.Scatter3d(
         x=[start[0], 0], y=[start[1], seguranca], z=[start[2], 0],
         mode='lines+markers',
-        line=dict(color='black', width=5),
+        line=dict(color='#ffba08', width=5),
         marker=dict(size=4),
-        name='Vetor ideal'
+        name='Vetor real y'
     ))
 
     fig1.add_trace(go.Scatter3d(
         x=[start[0], 0], y=[start[1], 0], z=[start[2], ambiental],
         mode='lines+markers',
-        line=dict(color='black', width=5),
+        line=dict(color='#ffba08', width=5),
         marker=dict(size=4),
-        name='Vetor ideal'
+        name='Vetor real z'
     ))
 
     # face triangular
@@ -362,10 +418,10 @@ def atualizar_grafico(estado_selecionado, ano_selecionado):
     # Ajustar limites dos eixos
     fig1.update_layout(
         scene=dict(
-            xaxis=dict(range=[0, 10], title='Equidade Energética - x'),
-            yaxis=dict(range=[0, 10], title='Segurança Energética - y'),
-            zaxis=dict(range=[0, 10], title='Ambiental - z'),
-            #bgcolor="#bee1e6"
+            xaxis=dict(range=[0, 10], title='Equidade Energética - x',showbackground=False,showgrid=False,zeroline=False),
+            yaxis=dict(range=[0, 10], title='Segurança Energética - y',showbackground=False,showgrid=False,zeroline=False),
+            zaxis=dict(range=[0, 10], title='Ambiental - z',showbackground=False,showgrid=False,zeroline=False),
+            bgcolor="rgba(0,0,0,0)"
         ),
         title=f"Vetores 3D Interativos - Estado: {estado_selecionado}",
         height=600,
