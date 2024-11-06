@@ -60,25 +60,32 @@ app.layout = html.Div(
     },
     children=[
         # Adicionando o título no topo
-        html.H1(
-            "SISTEMA VETORIAL - TRILEMA ENERGÉTICO",  # Título
+        html.Div(
             style={
-                'textAlign': 'left',  # Centralizar o texto
-                'fontFamily': 'Helvetica',
-                'fontSize': '30px',  # Tamanho da fonte
-                #'marginBottom': '5px',  # Espaço abaixo do título
-                'margin-top' : '10px',
-                'margin-top' : '0',
-                #'margin-left' : 'auto',
-                'color': '#EDF6F9',
+                'height' : '50px',
+                'width': '100%',
                 'backgroundColor': '#0677BB',
-                'height' : '60px',
-                'width': '100%', 
-                'justifyContent': 'center',
-                
-            }
-        ),
+                'marginBottom': '10px',
+            },
+            children=[
+                html.H1(
+                    "SISTEMA VETORIAL - TRILEMA ENERGÉTICO",  # Título
+                    style={
+                        'textAlign': 'left',  # Centralizar o texto
+                        'fontFamily': 'Helvetica',
+                        'fontSize': '30px',  # Tamanho da fonte
+                        'margin-top' : '0',
+                        'margin-left' : '10px',
+                        'color': '#EDF6F9',
+                        'backgroundColor': '#0677BB',
+                        'height' : '50px',
+                        'display': 'flex',
+                        'alignItems': 'center', 
 
+                    }
+                ),
+            ]
+        ),
         # Conteúdo principal em linha
         html.Div(
             style={
@@ -140,12 +147,12 @@ app.layout = html.Div(
                                 'padding' : '10px',
                                 #'border' : '1px solid #ddd',
                                 #'border-radius': '10px',
-                                'margin-left' : '10px',
+                                #'margin-left' : '0px',
                                 'color': 'white',
                                 #'display': 'None'
-                                #'alignItems': 'center',
+                                #'alignItems': 'left',
                                 #'alignItems': 'flex-start',
-                                #'justifyContent': 'center'
+                                'justifyContent': 'left'
                             },
                             children=[
                                 html.H3("Ângulos de Inclinação", style={'fontFamily' : 'Helvetica',}),
@@ -177,6 +184,8 @@ app.layout = html.Div(
                         'height': 'auto',
                         'flexDirection': 'columns',
                         'backgroundColor': '#457b9d',
+                        'margin-left': '10px',
+                        'margin-right': '10px',
                     },
                     children=[
                         html.Div(
