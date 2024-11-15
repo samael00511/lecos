@@ -99,10 +99,10 @@ app.layout = html.Div(
                 # Div esquerda (dropdowns e informações)
                 html.Div(
                     style={
-                        'width': '20%',
+                        'width': '30%',
                         'height': '100%',
                         'display': 'flex', 
-                        'minWidth': '250px',
+                        #'minWidth': '250px',
                         'flexDirection': 'column',  # Coloca dropdowns em coluna
                         'margin-left': '10px' ,# Espaçamento à direita
                         'backgroundColor': '#0677BB',
@@ -139,7 +139,7 @@ app.layout = html.Div(
                                 'width': '90%',
                             }
                         ),
-                        html.Div(style={'height': '20px'}),  # Espaçamento entre as divs
+                        html.Div(style={'height': '2%'}),  # Espaçamento entre as divs
                         html.Div(
                             id='angulos-div',
                             style={
@@ -177,35 +177,17 @@ app.layout = html.Div(
                         )
                     ],
                 ),
-                html.Div(style={'height': '400px', 'display': 'flex'}),  # Espaçamento entre as divs                
+                # html.Div(style={'height': '400px', 'display': 'flex'}),  # Espaçamento entre as divs                
                 html.Div(
                     style={
                         'width': '100%',  # Largura maior para acomodar os gráficos
                         'height': 'auto',
                         'flexDirection': 'columns',
                         'backgroundColor': '#457b9d',
-                        'margin-left': '10px',
-                        'margin-right': '10px',
+                        'margin-left': '20px',
+                        'margin-right': '20px',
                     },
                     children=[
-                        html.Div(
-                            style={
-                                #'backgroundColor': '#EDF6F9',  
-                                'width': '1520px',  # Largura maior para acomodar os gráficos
-                                'height': '100px',
-                                'margin-left': '30px',
-                                'color': 'white'
-                            },
-                            children=[
-                                html.H1(
-                                "Este painel oferece uma comparação entre o sistema vetorial proposto na tése e entre o triângulo do trilema energético, proposto por parovic.",
-                                style={
-                                    'fontFamily' : 'Helvetica',
-                                    'fontSize' : '16px',
-                                }
-                                )
-                            ]
-                        ),
                         # Div para os gráficos
                         html.Div(
                             style={
@@ -217,6 +199,7 @@ app.layout = html.Div(
                                 #'margin-left': '70px',
                                 #'margin-right': '20px',
                                 'margin-top': '0',
+                                'margin-right': '20px',
                                 'alignItems': 'flex-start',
                                 'alignItems': 'center',
                                 'justifyContent': 'center',  # Espaçar os gráficos igualmente
@@ -232,21 +215,28 @@ app.layout = html.Div(
                                         #'height': '100px', 
                                         #'width': '100px', 
                                         #'margin-left': '50px',
-                                        #'margin-top': '50px',
+                                        'margin-top': '130px',
                                         #'justifyContent': 'center',
                                         }  # Ajustando dimensões
                                 ),
-                                html.Div(style={'width': '20px'}),
-                                dcc.Graph(
-                                    id='ternario-grafico',
-                                    config={'displayModeBar': True},
+                                html.Div(style={'width': '10px'}),
+                                html.Div(
                                     style={
-                                        #'height': '100px', 
-                                        #'width': '100px', 
-                                        #'margin-left': '20px',
-                                        #'margin-top': '50px',
-                                        #'backgroundColor': '#80ffdb'
-                                        }  # Ajustando dimensões e espaçamento
+                                        'display': 'flex',
+                                        'flexDirection': 'row',  # Organiza os elementos na vertical
+                                        'alignItems': 'center',  # Alinha os itens ao centro
+                                        'justifyContent': 'center',  # Justifica os itens no centro
+                                        'margin-top': '130px',
+                                    },
+                                    children=[
+                                        html.Img(
+                                            src='/assets/CEARÁ.gif',
+                                            style={'width': '500px', 'height': '600px',}
+                                        ),html.Img(
+                                            src='/assets/PIAUÍ.gif',
+                                            style={'width': '500px', 'height': '600px',}
+                                        )
+                                    ]
                                 )
                             ]
                         ),
@@ -262,7 +252,6 @@ app.layout = html.Div(
 # Callback para atualizar o gráfico com base na seleção do dropdown
 @app.callback(
     [Output('vetor-grafico', 'figure'),
-     Output('ternario-grafico', 'figure'),
      Output('angulo-ideal-x', 'children'),
      Output('angulo-ideal-y', 'children'),
      Output('angulo-ideal-z', 'children'),
@@ -427,55 +416,17 @@ def atualizar_grafico(estado_selecionado, ano_selecionado):
     # Ajustar limites dos eixos
     fig1.update_layout(
         scene=dict(
-            xaxis=dict(range=[0, 10], title='Equidade Energética - x',showbackground=False,showgrid=False,zeroline=False),
-            yaxis=dict(range=[0, 10], title='Segurança Energética - y',showbackground=False,showgrid=False,zeroline=False),
+            xaxis=dict(range=[0, 10], title='Equidade - x',showbackground=False,showgrid=False,zeroline=False),
+            yaxis=dict(range=[0, 10], title='Segurança - y',showbackground=False,showgrid=False,zeroline=False),
             zaxis=dict(range=[0, 10], title='Ambiental - z',showbackground=False,showgrid=False,zeroline=False),
             bgcolor="rgba(0,0,0,0)"
         ),
         title=f"Vetores 3D Interativos - Estado: {estado_selecionado}",
         height=600,
-        width=750,
+        width=800,
     )
 
-    # Criar a figura para o gráfico ternário
-    fig2 = go.Figure()
-
-    # Adicionar o gráfico ternário
-    fig2.add_trace(go.Scatterternary({
-        'mode': 'markers',
-        'a': [equidade],  # Equidade é o eixo A
-        'b': [seguranca],  # Segurança é o eixo B
-        'c': [ambiental],  # Ambiental é o eixo C
-        'marker': {'symbol': 100, 'color': 'red', 'size': 14},
-        'name': 'Dimensões Energéticas'
-    }))
-
-    #ponto de equilibrio
-    equilibrio = [1/3, 1/3, 1/3]
-
-    fig2.add_trace(go.Scatterternary({
-        'mode': 'markers',
-        'a': [equilibrio[0]],  # Equidade é o eixo A
-        'b': [equilibrio[1]],  # Segurança é o eixo B
-        'c': [equilibrio[2]],  # Ambiental é o eixo C
-        'marker': {'symbol': 100, 'color': 'blue', 'size': 14},
-        'name': 'Ponto de Equilibrio'
-    }))
-
-    # Configuração do gráfico ternário
-    fig2.update_layout({
-        'ternary': {
-            'sum': 100,
-            'aaxis': {'title': 'Equidade', 'min': 0, 'linewidth': 2, 'ticks': 'outside'},
-            'baxis': {'title': 'Segurança', 'min': 0, 'linewidth': 2, 'ticks': 'outside'},
-            'caxis': {'title': 'Ambiental', 'min': 0, 'linewidth': 2, 'ticks': 'outside'}
-        },
-        'title': f'Gráfico Ternário - Estado: {estado_selecionado}, Ano: {ano_selecionado}',
-        'height': 600,
-        'width': 750
-    })
-
-
+   
 
     # Calcular os ângulos de inclinação em relação aos eixos
     def calcular_angulo_eixo(vetor, eixo):
@@ -504,7 +455,7 @@ def atualizar_grafico(estado_selecionado, ano_selecionado):
 
     angulo_ideal_generico = calcular_angulo_eixo(ideal, [equidade, seguranca, ambiental])
 
-    return (fig1,fig2,
+    return (fig1,
             f"Eixo X: {angulo_ideal_x:.2f}°",
             f"Eixo Y: {angulo_ideal_y:.2f}°",
             f"Eixo Z: {angulo_ideal_z:.2f}°",
