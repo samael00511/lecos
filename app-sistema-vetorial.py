@@ -181,64 +181,45 @@ app.layout = html.Div(
                 html.Div(
                     style={
                         'width': '100%',  # Largura maior para acomodar os gráficos
-                        'height': 'auto',
-                        'flexDirection': 'columns',
+                        'height': '900px',
+                        'flexDirection': 'row',
                         'backgroundColor': '#457b9d',
-                        'margin-left': '20px',
-                        'margin-right': '20px',
+                        'margin-left': '10px',
+                        'margin-right': '10px',
                     },
                     children=[
+                        html.Div(
+                            style={
+                                'margin': '10px',
+                                'display': 'flex',
+                                #'justifyContent': 'right',
+                                'fontSize' : '12px'
+                            },
+                            children=[
+                                html.Button("Mostrar Gráfico", id='show-graph-btn', n_clicks=0, style={'fontSize' : '25px'}),
+                                html.Button("Mostrar GIF", id='show-gif-btn', n_clicks=0, style={'fontSize' : '25px'}),
+                            ]
+                        ),
                         # Div para os gráficos
                         html.Div(
                             style={
+                                'marginTop': '20px',
+                                'textAlign': 'center',
                                 'display': 'flex',
-                                'flexDirection': 'row',  # Alinhar os gráficos horizontalmente
-                                'width': '100%',  # Largura maior para acomodar os gráficos
-                                'height': '650px',
-                                #'alignItems': 'center',
-                                #'margin-left': '70px',
-                                #'margin-right': '20px',
-                                'margin-top': '0',
-                                'margin-right': '20px',
-                                'alignItems': 'flex-start',
-                                'alignItems': 'center',
-                                'justifyContent': 'center',  # Espaçar os gráficos igualmente
-                                'border-radius': '10px',
-                                #'backgroundColor': '#bee1e6',
-                            },
+                                'flexDirection': 'column',  # Organiza os elementos de conteúdo em coluna
+                                'alignItems': 'center',  # Centraliza os elementos
+                                            },
                             children=[
                                 # Primeiro gráfico 3D
                                 dcc.Graph(
                                     id='vetor-grafico',
                                     config={'displayModeBar': True},
-                                    style={
-                                        #'height': '100px', 
-                                        #'width': '100px', 
-                                        #'margin-left': '50px',
-                                        'margin-top': '120px',
-                                        #'justifyContent': 'center',
-                                        }  # Ajustando dimensões
                                 ),
-                                html.Div(style={'width': '20px'}),
-                                html.Div(
-                                    style={
-                                        'display': 'flex',
-                                        'flexDirection': 'row',  # Organiza os elementos na vertical
-                                        'alignItems': 'center',  # Alinha os itens ao centro
-                                        'justifyContent': 'center',  # Justifica os itens no centro
-                                        'margin-top': '120px',
-                                    },
-                                    children=[
-                                        html.Img(
+                                html.Img(
+                                            id='gif-image',
                                             src='/assets/CEARÁ.gif',
-                                            style={'width': '820px', 'height': '720px',}
+                                            style={'width': '720px', 'height': '820px','display': 'none'}
                                         ),
-                                        #html.Img(
-                                        #    src='/assets/PIAUÍ.gif',
-                                        #    style={'width': '500px', 'height': '600px',}
-                                        #)
-                                    ]
-                                )
                             ]
                         ),
                     ]
@@ -248,6 +229,21 @@ app.layout = html.Div(
         ),
     ]
 )
+
+# Callback para alternar visibilidade
+@app.callback(
+    [Output('vetor-grafico', 'style'), Output('gif-image', 'style')],
+    [Input('show-graph-btn', 'n_clicks'), Input('show-gif-btn', 'n_clicks')]
+)
+def toggle_visibility(show_graph_clicks, show_gif_clicks):
+    # Se "Mostrar Gráfico" for clicado
+    if show_graph_clicks > show_gif_clicks:
+        return {'marginTop': '20px', 'height': '600px'}, {'display': 'none'}
+    # Se "Mostrar GIF" for clicado
+    elif show_gif_clicks > show_graph_clicks:
+        return {'display': 'none'}, {'width': '820px', 'height': '720px'}
+    # Caso inicial
+    return {'marginTop': '20px', 'height': '600px'}, {'display': 'none'}
 
 
 # Callback para atualizar o gráfico com base na seleção do dropdown
