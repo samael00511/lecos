@@ -215,27 +215,28 @@ app.layout = html.Div(
                                         #'height': '100px', 
                                         #'width': '100px', 
                                         #'margin-left': '50px',
-                                        'margin-top': '130px',
+                                        'margin-top': '120px',
                                         #'justifyContent': 'center',
                                         }  # Ajustando dimensões
                                 ),
-                                html.Div(style={'width': '10px'}),
+                                html.Div(style={'width': '20px'}),
                                 html.Div(
                                     style={
                                         'display': 'flex',
                                         'flexDirection': 'row',  # Organiza os elementos na vertical
                                         'alignItems': 'center',  # Alinha os itens ao centro
                                         'justifyContent': 'center',  # Justifica os itens no centro
-                                        'margin-top': '130px',
+                                        'margin-top': '120px',
                                     },
                                     children=[
                                         html.Img(
                                             src='/assets/CEARÁ.gif',
-                                            style={'width': '500px', 'height': '600px',}
-                                        ),html.Img(
-                                            src='/assets/PIAUÍ.gif',
-                                            style={'width': '500px', 'height': '600px',}
-                                        )
+                                            style={'width': '820px', 'height': '720px',}
+                                        ),
+                                        #html.Img(
+                                        #    src='/assets/PIAUÍ.gif',
+                                        #    style={'width': '500px', 'height': '600px',}
+                                        #)
                                     ]
                                 )
                             ]
@@ -422,8 +423,8 @@ def atualizar_grafico(estado_selecionado, ano_selecionado):
             bgcolor="rgba(0,0,0,0)"
         ),
         title=f"Vetores 3D Interativos - Estado: {estado_selecionado}",
-        height=600,
-        width=800,
+        height=720,
+        width=820,
     )
 
    
