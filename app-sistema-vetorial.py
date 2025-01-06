@@ -418,7 +418,7 @@ def atualizar_grafico(estado_selecionado, ano_selecionado):
             zaxis=dict(range=[0, 10], title='Ambiental - z',showbackground=False,showgrid=False,zeroline=False),
             bgcolor="rgba(0,0,0,0)"
         ),
-        title=f"Vetores 3D Interativos - Estado: {estado_selecionado} - {ano_selecionado}",
+        title=f"Interactive 3D Vectors : {estado_selecionado} - {ano_selecionado}",
         height=720,
         width=820,
     )
