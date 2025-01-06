@@ -320,7 +320,7 @@ def atualizar_grafico(estado_selecionado, ano_selecionado):
         mode='lines+markers',
         line=dict(color='red', width=5),
         marker=dict(size=4),
-        name='Vetor genérico'
+        name='Generic vector'
     ))
 
     # Vetor ideal
@@ -329,7 +329,7 @@ def atualizar_grafico(estado_selecionado, ano_selecionado):
         mode='lines+markers',
         line=dict(color='blue', width=5),
         marker=dict(size=4),
-        name='Vetor ideal'
+        name='Ideal vector'
     ))
 
     # projeções vetor ideal
@@ -339,7 +339,7 @@ def atualizar_grafico(estado_selecionado, ano_selecionado):
         mode='lines+markers',
         line=dict(color='#1d3557', width=5),
         marker=dict(size=4),
-        name='Vetor ideal x'
+        name='Ideal vector x'
     ))
 
     fig1.add_trace(go.Scatter3d(
@@ -347,7 +347,7 @@ def atualizar_grafico(estado_selecionado, ano_selecionado):
         mode='lines+markers',
         line=dict(color='#1d3557', width=5),
         marker=dict(size=4),
-        name='Vetor ideal y'
+        name='Ideal vector y'
     ))
 
     fig1.add_trace(go.Scatter3d(
@@ -355,7 +355,7 @@ def atualizar_grafico(estado_selecionado, ano_selecionado):
         mode='lines+markers',
         line=dict(color='#1d3557', width=5),
         marker=dict(size=4),
-        name='Vetor ideal z'
+        name='Ideal vector z'
     ))
 
     # projeções vetor de analise
@@ -365,7 +365,7 @@ def atualizar_grafico(estado_selecionado, ano_selecionado):
         mode='lines+markers',
         line=dict(color='#ffba08', width=5),
         marker=dict(size=4),
-        name='Vetor real x'
+        name='Royal vector x'
     ))
 
     fig1.add_trace(go.Scatter3d(
@@ -373,7 +373,7 @@ def atualizar_grafico(estado_selecionado, ano_selecionado):
         mode='lines+markers',
         line=dict(color='#ffba08', width=5),
         marker=dict(size=4),
-        name='Vetor real y'
+        name='Royal vector y'
     ))
 
     fig1.add_trace(go.Scatter3d(
@@ -381,7 +381,7 @@ def atualizar_grafico(estado_selecionado, ano_selecionado):
         mode='lines+markers',
         line=dict(color='#ffba08', width=5),
         marker=dict(size=4),
-        name='Vetor real z'
+        name='Royal vector z'
     ))
 
     # face triangular
