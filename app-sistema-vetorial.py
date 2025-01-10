@@ -414,7 +414,7 @@ def atualizar_grafico(estado_selecionado, ano_selecionado):
     fig1.update_layout(
         scene=dict(
             xaxis=dict(range=[0, 10], title='Equity - x',showbackground=False,showgrid=False,zeroline=False),
-            yaxis=dict(range=[0, 10], title='Equity - y',showbackground=False,showgrid=False,zeroline=False),
+            yaxis=dict(range=[0, 10], title='Security - y',showbackground=False,showgrid=False,zeroline=False),
             zaxis=dict(range=[0, 10], title='Environmental - z',showbackground=False,showgrid=False,zeroline=False),
             bgcolor="rgba(0,0,0,0)"
         ),
