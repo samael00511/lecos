@@ -208,6 +208,7 @@ app.layout = html.Div(
                                 html.Div(
                                     style={
                                         'fontFamily' : 'Helvetica',
+                                        'color' : 'white',
                                     },
                                     children=[
                                         html.P("disudhsfoisdjfodkfsdpfkmsdfosdifnsdofknmsdofsnkdfoskdmfsopidfnsdmfosmkfoipsdfnoeriopgnmjerognmkierjgopierjngmoerignmeronmrgopernkgmerkopgnmergklergklermgeklrg")
