@@ -200,26 +200,41 @@ app.layout = html.Div(
                                 html.Button("Mostrar GIF", id='show-gif-btn', n_clicks=0, style={'fontSize' : '25px'}),
                             ]
                         ),
-                        # Div para os gráficos
-                        html.Div(
+                        html.div(
                             style={
-                                'marginTop': '20px',
-                                'textAlign': 'center',
-                                'display': 'flex',
-                                'flexDirection': 'column',  # Organiza os elementos de conteúdo em coluna
-                                'alignItems': 'center',  # Centraliza os elementos
-                                            },
+                                'flexDirection': 'row',
+                            },
                             children=[
-                                # Primeiro gráfico 3D
-                                dcc.Graph(
-                                    id='vetor-grafico',
-                                    config={'displayModeBar': True},
+                                html.Div(
+                                    style={
+                                        'fontFamily' : 'Helvetica',
+                                    },
+                                    children=[
+                                        html.P("disudhsfoisdjfodkfsdpfkmsdfosdifnsdofknmsdofsnkdfoskdmfsopidfnsdmfosmkfoipsdfnoeriopgnmjerognmkierjgopierjngmoerignmeronmrgopernkgmerkopgnmergklergklermgeklrg")
+                                    ]
                                 ),
-                                html.Img(
-                                            id='gif-image',
-                                            src='/assets/CEARÁ.gif',
-                                            style={'width': '720px', 'height': '820px','display': 'none'}
+                                # Div para os gráficos
+                                html.Div(
+                                    style={
+                                        'marginTop': '20px',
+                                        'textAlign': 'center',
+                                        'display': 'flex',
+                                        'flexDirection': 'column',  # Organiza os elementos de conteúdo em coluna
+                                        'alignItems': 'center',  # Centraliza os elementos
+                                                    },
+                                    children=[
+                                        # Primeiro gráfico 3D
+                                        dcc.Graph(
+                                            id='vetor-grafico',
+                                            config={'displayModeBar': True},
                                         ),
+                                        html.Img(
+                                                    id='gif-image',
+                                                    src='/assets/CEARÁ.gif',
+                                                    style={'width': '720px', 'height': '820px','display': 'none'}
+                                                ),
+                                    ]
+                                ),
                             ]
                         ),
                     ]
