@@ -181,7 +181,7 @@ app.layout = html.Div(
                 html.Div(
                     style={
                         'width': '100%',  # Largura maior para acomodar os gráficos
-                        'height': '900px',
+                        'height': '100%', # 900px
                         'flexDirection': 'column', # row
                         'backgroundColor': '#457b9d',
                         'margin-left': '10px',
