@@ -200,7 +200,7 @@ app.layout = html.Div(
                                 html.Button("Mostrar GIF", id='show-gif-btn', n_clicks=0, style={'fontSize' : '25px'}),
                             ]
                         ),
-                        html.div(
+                        html.Div(
                             style={
                                 'flexDirection': 'row',
                             },
