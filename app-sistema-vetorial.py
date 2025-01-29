@@ -209,9 +209,11 @@ app.layout = html.Div(
                                     style={
                                         'fontFamily' : 'Helvetica',
                                         'color' : 'white',
+                                        'margin-roght': '10px',
+                                        'fontsize': '16px',
                                     },
                                     children=[
-                                        html.P(""),
+                                        html.P("Abaixo temos uma figura que permiti visualizar de forma interativa a tendência de crescimento dos vetores."),
                                         ]
                                 ),
                                 # Div para os gráficos
