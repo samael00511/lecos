@@ -202,7 +202,7 @@ app.layout = html.Div(
                         ),
                         html.Div(
                             style={
-                                'flexDirection': 'row',
+                                'flexDirection': 'column',
                             },
                             children=[
                                 html.Div(
