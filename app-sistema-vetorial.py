@@ -209,7 +209,7 @@ app.layout = html.Div(
                                     style={
                                         'fontFamily' : 'Helvetica',
                                         'color' : 'white',
-                                        'margin-roght': '10px',
+                                        'margin-left': '20px',
                                         'fontsize': '16px',
                                     },
                                     children=[
