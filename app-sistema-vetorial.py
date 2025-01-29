@@ -69,7 +69,7 @@ app.layout = html.Div(
             },
             children=[
                 html.H1(
-                    "SISTEMA VETORIAL - TRILEMA ENERGÉTICO",  # Título
+                    "Sistema Vetorial Tridimensional da Transição Energética Justa em Nível Subnacional",  # Título
                     style={
                         'textAlign': 'left',  # Centralizar o texto
                         'fontFamily': 'Helvetica',
@@ -211,12 +211,8 @@ app.layout = html.Div(
                                         'color' : 'white',
                                     },
                                     children=[
-                                        html.P("2018: O Sistema Vetorial Tridimensional da Transição Energética do Ceará para o ano de 2018 revela um desequilíbrio entre as dimensões que compõem o sistema. Esta representação ilustra os desafios enfrentados pelo estado no contexto da transição energética e aponta para a necessidade de medidas integradas e direcionadas para mitigar o desequilíbrio entre as dimensões. Para o ano de 2018, a dimensão de Equidade Energética é a que apresenta uma maior lacuna quando comparada a figura vetorial ideal, aumentando assim, a urgência de políticas públicas que promovam a redução das desigualdades no acesso à energia, especialmente para populações vulneráveis. Nesta dimensão indicadores que impactaram negativamente foram: subsídios à energia renovável, IDH e Índice de GINI. Além disso, as dimensões de Segurança Energética e Gestão Ambiental exigem fortalecimento por meio de estratégias que garantam a estabilidade do fornecimento de energia, promovam o uso sustentável dos recursos naturais e minimizem os impactos ambientais. O equilíbrio entre essas dimensões é essencial para que o Ceará avance de forma consistente em direção a uma transição energética justa e sustentável."),
-                                        html.P("2019: O Sistema Vetorial Tridimensional da Transição Energética do Ceará para o ano de 2019, assim como em 2018, revela ainda um desequilíbrio entre as dimensões que compõem o sistema. Mais uma vez a dimensão de Equidade Energética é a que apresenta uma maior lacuna quando comparada a figura vetorial ideal, aumentando assim, a urgência de políticas públicas que promovam a redução das desigualdades no acesso à energia, especialmente para populações vulneráveis. Além disso, a dimensão de Gestão Ambiental apresentou um resultado inferior ao ano anterior. Este resultado foi impactado por indicadores como consumo de água per capita, acesso a água, esgoto não tratado e mortes por problemas respiratórios."),
-                                        html.P("2020: O Sistema Vetorial Tridimensional da Transição Energética do Ceará para o ano de 2020, assim como em 2018 e 2019, revela uma redução discreta no desequilíbrio entre as dimensões que compõem o sistema. Mais uma vez a dimensão de Equidade Energética é a que apresenta a maior lacuna quando comparada a figura vetorial ideal. Este resultado foi impactado por indicadores como subsídios à energia renovável, IDH e Índice de GINI. "),
-                                        html.P("2021: O Sistema Vetorial Tridimensional da Transição Energética do Ceará em 2021, revela mais uma vez a dimensão de Equidade Energética é a que apresenta a maior lacuna quando comparada a figura vetorial ideal. Este resultado foi impactado por indicadores como subsídios à energia renovável, IDH e Índice de GINI."),
-                                        html.P("2022: O Sistema Vetorial Tridimensional da Transição Energética do Ceará para o ano de 2022, revela uma redução no desequilíbrio entre as dimensões que compõem o sistema. Mais uma vez a dimensão de Equidade Energética é a que apresenta a maior lacuna quando comparada a figura vetorial ideal. Este resultado foi impactado mais uma vez, por indicadores como subsídios à energia renovável, IDH e Índice de GINI.")
-                                    ]
+                                        html.P(""),
+                                        ]
                                 ),
                                 # Div para os gráficos
                                 html.Div(
